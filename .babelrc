@@ -12,6 +12,11 @@
     ],
     "plugins": [
         "transform-vue-jsx",
-        "transform-runtime"
+        "transform-runtime",
+        ["import", {
+            "libraryName": "",
+            "libraryDirectory": "es",
+            "style": true
+        }] 
     ]
 }
