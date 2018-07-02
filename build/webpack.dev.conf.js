@@ -40,7 +40,16 @@ module.exports = merge(baseConfig, {
         hot: true,
         inline: true,
         overlay: true,
-        publicPath: "/"
+        publicPath: "/",
+        proxy: {
+            "/api": {
+                target: "",
+                changeOrigin: true,
+                pathRewrite: {
+                    "^api": ""
+                }
+            }
+        }
     },
 
     devtool: "cheap-module-eval-source-map",
