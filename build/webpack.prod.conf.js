@@ -14,6 +14,7 @@ module.exports = merge(baseConfig, {
     mode: "production",
 
     output: {
+        publicPath: "",
         path: resolve("dist"),
         filename: "static/js/[name].[chunkhash].js",
         chunkFilename: "static/js/[id].[chunkhash].js"
@@ -25,12 +26,18 @@ module.exports = merge(baseConfig, {
                 test: /\.scss$/,
                 use: ExtractTextWebpackPlugin.extract({
                     fallback: "vue-style-loader",
-                    use: [ {
-                        loader: "css-loader",
-                        options: {
-                            // modules: true
-                        }
-                    }, "postcss-loader", "sass-loader"]
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: {
+                                // modules: true
+                            }
+                        },
+                        "postcss-loader",
+                        "resolve-url-loader",
+                        "sass-loader?sourceMap"
+                    ],
+                    publicPath: "../../"
                 })
             }
         ]
@@ -40,7 +47,6 @@ module.exports = merge(baseConfig, {
 
         new ExtractTextWebpackPlugin({
             filename: "static/css/[name].[hash:7].css",
-
             allChunks: true
         }),
 
@@ -58,8 +64,8 @@ module.exports = merge(baseConfig, {
             }
         }),
 
-        new CleanWebpackPlugin([
-            resolve("dist/*.*")
-        ])
+        new CleanWebpackPlugin(["dist"], {
+
+        })
     ]
 })

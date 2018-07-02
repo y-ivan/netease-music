@@ -21,10 +21,12 @@ module.exports = merge(baseConfig, {
                     "vue-style-loader",
                     "css-loader",
                     "postcss-loader",
+                    "resolve-url-loader",
                     {
                         loader: "sass-loader",
                         options: {
-                            indentedSyntax: false
+                            indentedSyntax: false,
+                            sourceMap: true
                         }
                     }
                 ]
