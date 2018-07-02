@@ -14,7 +14,7 @@
         "transform-vue-jsx",
         "transform-runtime",
         ["import", {
-            "libraryName": "",
+            "libraryName": "mint-ui",
             "libraryDirectory": "es",
             "style": true
         }] 
